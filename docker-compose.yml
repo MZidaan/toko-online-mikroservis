@@ -1,0 +1,26 @@
+name: tokokelompok
+
+services:
+  katalog:
+    build:
+      context: .
+      dockerfile: katalog-service/Dockerfile
+    container_name: tokokelompok-katalog
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-jangan-dipakai-di-produksi}
+      SERVICE_TOKEN: ${SERVICE_TOKEN:-token-antar-layanan-dev}
+      DATA_DIR: /data
+    ports:
+      - "8001:8001"
+    volumes:
+      - katalog-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8001/health').status==200 else 1)"]
+      interval: 12s
+      timeout: 4s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  katalog-data:
