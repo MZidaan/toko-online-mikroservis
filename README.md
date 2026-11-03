@@ -4,14 +4,14 @@ Repositori tugas kelompok berisi **5 arsip zip bertahap**. Setiap arsip adalah v
 sebelumnya ditambah bagian milik peserta berikutnya, sehingga riwayat pekerjaan terlihat
 jelas (v1 → v5). Arsip berada di folder `releases/`.
 
-> **Versi ini: tahap 1 dari 5** - Katalog Service.
+> **Versi ini: tahap 2 dari 5** - Pelanggan Service.
 
 ## Matriks tahap
 
 | Arsip | Isi utama | Pemilik | Status |
 |---|---|---|---|
 | v1 | Katalog Service | Peserta 1 | selesai |
-| v2 | Pelanggan Service | Peserta 2 | belum |
+| v2 | Pelanggan Service | Peserta 2 | selesai |
 | v3 | Order Service + saga kompensasi | Peserta 3 | belum |
 | v4 | Pembayaran Service | Peserta 4 | belum |
 | v5 | API Gateway, dashboard, docker compose, seed, e2e | Peserta 5 | belum |
@@ -52,6 +52,7 @@ Autentikasi pengguna memakai JWT HS256; autentikasi antar layanan memakai `X-Ser
 | Layanan | Folder | Alamat |
 |---|---|---|
 | katalog | `katalog-service/` | http://localhost:8001 |
+| pelanggan | `pelanggan-service/` | http://localhost:8002 |
 
 ## Menjalankan
 
@@ -59,6 +60,15 @@ Autentikasi pengguna memakai JWT HS256; autentikasi antar layanan memakai `X-Ser
 python -m venv .venv && . .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r katalog-service/requirements.txt
 python scripts/dev_up.py
+python seed/seed_data.py --pesanan 4     # opsional, data contoh
+```
+
+### Menjalankan dengan Docker Compose
+
+```bash
+cp .env.example .env
+docker compose up --build -d
+docker compose ps
 ```
 
 Akun demo setelah seed: `admin@contoh.test / admin12345`, `siti@contoh.test / rahasia123`.
@@ -95,6 +105,10 @@ Tes yang layanannya belum ada akan **dilewati** (bukan gagal) - itu normal untuk
 - `katalog-service/app.py`
 - `katalog-service/requirements.txt`
 - `katalog-service/schema.sql`
+- `pelanggan-service/Dockerfile`
+- `pelanggan-service/app.py`
+- `pelanggan-service/requirements.txt`
+- `pelanggan-service/schema.sql`
 - `scripts/dev_up.py`
 - `seed/data/katalog.json`
 - `seed/data/pelanggan.json`
@@ -102,9 +116,10 @@ Tes yang layanannya belum ada akan **dilewati** (bukan gagal) - itu normal untuk
 - `tests/base.py`
 - `tests/run_tests.py`
 - `tests/test_katalog.py`
+- `tests/test_pelanggan.py`
 
-## Catatan tahap 1
+## Catatan tahap 2
 
-Katalog Service dikerjakan oleh **Peserta 1**. Detail perubahan ada di
+Pelanggan Service dikerjakan oleh **Peserta 2**. Detail perubahan ada di
 [CHANGELOG.md](CHANGELOG.md). Arsip tahap sebelumnya tetap dapat dijalankan sendiri karena
 setiap tahap membawa seluruh kode tahap sebelumnya.
