@@ -4,7 +4,7 @@ Repositori tugas kelompok berisi **5 arsip zip bertahap**. Setiap arsip adalah v
 sebelumnya ditambah bagian milik peserta berikutnya, sehingga riwayat pekerjaan terlihat
 jelas (v1 → v5). Arsip berada di folder `releases/`.
 
-> **Versi ini: tahap 2 dari 5** - Pelanggan Service.
+> **Versi ini: tahap 3 dari 5** - Order Service + saga kompensasi.
 
 ## Matriks tahap
 
@@ -12,7 +12,7 @@ jelas (v1 → v5). Arsip berada di folder `releases/`.
 |---|---|---|---|
 | v1 | Katalog Service | Peserta 1 | selesai |
 | v2 | Pelanggan Service | Peserta 2 | selesai |
-| v3 | Order Service + saga kompensasi | Peserta 3 | belum |
+| v3 | Order Service + saga kompensasi | Peserta 3 | selesai |
 | v4 | Pembayaran Service | Peserta 4 | belum |
 | v5 | API Gateway, dashboard, docker compose, seed, e2e | Peserta 5 | belum |
 
@@ -53,6 +53,7 @@ Autentikasi pengguna memakai JWT HS256; autentikasi antar layanan memakai `X-Ser
 |---|---|---|
 | katalog | `katalog-service/` | http://localhost:8001 |
 | pelanggan | `pelanggan-service/` | http://localhost:8002 |
+| order | `order-service/` | http://localhost:8003 |
 
 ## Menjalankan
 
@@ -105,6 +106,11 @@ Tes yang layanannya belum ada akan **dilewati** (bukan gagal) - itu normal untuk
 - `katalog-service/app.py`
 - `katalog-service/requirements.txt`
 - `katalog-service/schema.sql`
+- `order-service/Dockerfile`
+- `order-service/app.py`
+- `order-service/requirements.txt`
+- `order-service/saga.py`
+- `order-service/schema.sql`
 - `pelanggan-service/Dockerfile`
 - `pelanggan-service/app.py`
 - `pelanggan-service/requirements.txt`
@@ -116,10 +122,11 @@ Tes yang layanannya belum ada akan **dilewati** (bukan gagal) - itu normal untuk
 - `tests/base.py`
 - `tests/run_tests.py`
 - `tests/test_katalog.py`
+- `tests/test_order.py`
 - `tests/test_pelanggan.py`
 
-## Catatan tahap 2
+## Catatan tahap 3
 
-Pelanggan Service dikerjakan oleh **Peserta 2**. Detail perubahan ada di
+Order Service + saga kompensasi dikerjakan oleh **Peserta 3**. Detail perubahan ada di
 [CHANGELOG.md](CHANGELOG.md). Arsip tahap sebelumnya tetap dapat dijalankan sendiri karena
 setiap tahap membawa seluruh kode tahap sebelumnya.

@@ -43,6 +43,38 @@ services:
       retries: 5
       start_period: 10s
 
+  order:
+    build:
+      context: .
+      dockerfile: order-service/Dockerfile
+    container_name: tokokelompok-order
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-jangan-dipakai-di-produksi}
+      SERVICE_TOKEN: ${SERVICE_TOKEN:-token-antar-layanan-dev}
+      DATA_DIR: /data
+      KATALOG_URL: http://katalog:8001
+      PELANGGAN_URL: http://pelanggan:8002
+      ORDER_URL: http://order:8003
+      PEMBAYARAN_URL: http://pembayaran:8004
+      INTEGRASI_PEMBAYARAN: "0"
+    ports:
+      - "8003:8003"
+    volumes:
+      - order-data:/data
+    depends_on:
+      katalog:
+        condition: service_healthy
+      pelanggan:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8003/health').status==200 else 1)"]
+      interval: 12s
+      timeout: 4s
+      retries: 5
+      start_period: 10s
+
 volumes:
   katalog-data:
   pelanggan-data:
+  order-data:
