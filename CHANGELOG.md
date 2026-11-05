@@ -26,3 +26,11 @@ Arsip: `releases/v3-order-service.zip`
 - Order Service: keranjang, checkout saga (reserve stok → pesanan → pembayaran), riwayat, pembatalan.
 - Kompensasi otomatis: rilis stok + pesanan DIBATALKAN, tercatat di tabel `saga_log`.
 - Integrasi pembayaran masih nonaktif (`INTEGRASI_PEMBAYARAN=0`); hook `simulasi` menguji kompensasi.
+
+## v4 - Pembayaran Service (Peserta 4)
+
+Arsip: `releases/v4-pembayaran-service.zip`
+
+- Pembayaran Service: inisiasi tagihan idempoten, referensi VA/QRIS, simulasi berhasil/gagal.
+- Sinkronisasi status: webhook ke Order Service + penyapuan tagihan kedaluwarsa.
+- Laporan ringkasan agregat dan ekspor CSV; integrasi checkout diaktifkan penuh.

@@ -4,7 +4,7 @@ Repositori tugas kelompok berisi **5 arsip zip bertahap**. Setiap arsip adalah v
 sebelumnya ditambah bagian milik peserta berikutnya, sehingga riwayat pekerjaan terlihat
 jelas (v1 → v5). Arsip berada di folder `releases/`.
 
-> **Versi ini: tahap 3 dari 5** - Order Service + saga kompensasi.
+> **Versi ini: tahap 4 dari 5** - Pembayaran Service.
 
 ## Matriks tahap
 
@@ -13,7 +13,7 @@ jelas (v1 → v5). Arsip berada di folder `releases/`.
 | v1 | Katalog Service | Peserta 1 | selesai |
 | v2 | Pelanggan Service | Peserta 2 | selesai |
 | v3 | Order Service + saga kompensasi | Peserta 3 | selesai |
-| v4 | Pembayaran Service | Peserta 4 | belum |
+| v4 | Pembayaran Service | Peserta 4 | selesai |
 | v5 | API Gateway, dashboard, docker compose, seed, e2e | Peserta 5 | belum |
 
 Rincian tiap arsip: [`releases/README.md`](releases/README.md). Hasil uji per tahap:
@@ -54,6 +54,7 @@ Autentikasi pengguna memakai JWT HS256; autentikasi antar layanan memakai `X-Ser
 | katalog | `katalog-service/` | http://localhost:8001 |
 | pelanggan | `pelanggan-service/` | http://localhost:8002 |
 | order | `order-service/` | http://localhost:8003 |
+| pembayaran | `pembayaran-service/` | http://localhost:8004 |
 
 ## Menjalankan
 
@@ -115,6 +116,10 @@ Tes yang layanannya belum ada akan **dilewati** (bukan gagal) - itu normal untuk
 - `pelanggan-service/app.py`
 - `pelanggan-service/requirements.txt`
 - `pelanggan-service/schema.sql`
+- `pembayaran-service/Dockerfile`
+- `pembayaran-service/app.py`
+- `pembayaran-service/requirements.txt`
+- `pembayaran-service/schema.sql`
 - `scripts/dev_up.py`
 - `seed/data/katalog.json`
 - `seed/data/pelanggan.json`
@@ -124,9 +129,10 @@ Tes yang layanannya belum ada akan **dilewati** (bukan gagal) - itu normal untuk
 - `tests/test_katalog.py`
 - `tests/test_order.py`
 - `tests/test_pelanggan.py`
+- `tests/test_pembayaran.py`
 
-## Catatan tahap 3
+## Catatan tahap 4
 
-Order Service + saga kompensasi dikerjakan oleh **Peserta 3**. Detail perubahan ada di
+Pembayaran Service dikerjakan oleh **Peserta 4**. Detail perubahan ada di
 [CHANGELOG.md](CHANGELOG.md). Arsip tahap sebelumnya tetap dapat dijalankan sendiri karena
 setiap tahap membawa seluruh kode tahap sebelumnya.
