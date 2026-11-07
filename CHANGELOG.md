@@ -34,3 +34,11 @@ Arsip: `releases/v4-pembayaran-service.zip`
 - Pembayaran Service: inisiasi tagihan idempoten, referensi VA/QRIS, simulasi berhasil/gagal.
 - Sinkronisasi status: webhook ke Order Service + penyapuan tagihan kedaluwarsa.
 - Laporan ringkasan agregat dan ekspor CSV; integrasi checkout diaktifkan penuh.
+
+## v5 - API Gateway, dashboard, docker compose, seed, e2e (Peserta 5)
+
+Arsip: `releases/v5-integrasi-dan-dashboard.zip`
+
+- API Gateway: proksi `/api/*`, verifikasi JWT di tepi dengan cache 20 detik, endpoint internal disembunyikan.
+- Dashboard toko (katalog, keranjang, checkout, riwayat) dan dashboard admin (pesanan, pembayaran, stok, laporan).
+- Docker Compose lengkap + healthcheck + volume, seed data demo, dan tes end-to-end melalui gateway.

@@ -4,7 +4,7 @@ Repositori tugas kelompok berisi **5 arsip zip bertahap**. Setiap arsip adalah v
 sebelumnya ditambah bagian milik peserta berikutnya, sehingga riwayat pekerjaan terlihat
 jelas (v1 → v5). Arsip berada di folder `releases/`.
 
-> **Versi ini: tahap 4 dari 5** - Pembayaran Service.
+> **Versi ini: tahap 5 dari 5** - API Gateway, dashboard, docker compose, seed, e2e.
 
 ## Matriks tahap
 
@@ -14,7 +14,7 @@ jelas (v1 → v5). Arsip berada di folder `releases/`.
 | v2 | Pelanggan Service | Peserta 2 | selesai |
 | v3 | Order Service + saga kompensasi | Peserta 3 | selesai |
 | v4 | Pembayaran Service | Peserta 4 | selesai |
-| v5 | API Gateway, dashboard, docker compose, seed, e2e | Peserta 5 | belum |
+| v5 | API Gateway, dashboard, docker compose, seed, e2e | Peserta 5 | selesai |
 
 Rincian tiap arsip: [`releases/README.md`](releases/README.md). Hasil uji per tahap:
 [`docs/HASIL-VERIFIKASI.md`](docs/HASIL-VERIFIKASI.md). Pohon sumber di akar repositori ini
@@ -55,6 +55,7 @@ Autentikasi pengguna memakai JWT HS256; autentikasi antar layanan memakai `X-Ser
 | pelanggan | `pelanggan-service/` | http://localhost:8002 |
 | order | `order-service/` | http://localhost:8003 |
 | pembayaran | `pembayaran-service/` | http://localhost:8004 |
+| gateway | `gateway/` | http://localhost:8000 |
 
 ## Menjalankan
 
@@ -103,6 +104,13 @@ Tes yang layanannya belum ada akan **dilewati** (bukan gagal) - itu normal untuk
 - `docs/API.md`
 - `docs/DISTRIBUSI-TUGAS.md`
 - `docs/HASIL-VERIFIKASI.md`
+- `gateway/Dockerfile`
+- `gateway/app.py`
+- `gateway/assets/.gitkeep`
+- `gateway/assets/app.js`
+- `gateway/assets/gaya.css`
+- `gateway/dashboard.py`
+- `gateway/requirements.txt`
 - `katalog-service/Dockerfile`
 - `katalog-service/app.py`
 - `katalog-service/requirements.txt`
@@ -125,14 +133,16 @@ Tes yang layanannya belum ada akan **dilewati** (bukan gagal) - itu normal untuk
 - `seed/data/pelanggan.json`
 - `seed/seed_data.py`
 - `tests/base.py`
+- `tests/e2e_test.py`
 - `tests/run_tests.py`
+- `tests/test_gateway.py`
 - `tests/test_katalog.py`
 - `tests/test_order.py`
 - `tests/test_pelanggan.py`
 - `tests/test_pembayaran.py`
 
-## Catatan tahap 4
+## Catatan tahap 5
 
-Pembayaran Service dikerjakan oleh **Peserta 4**. Detail perubahan ada di
+API Gateway, dashboard, docker compose, seed, e2e dikerjakan oleh **Peserta 5**. Detail perubahan ada di
 [CHANGELOG.md](CHANGELOG.md). Arsip tahap sebelumnya tetap dapat dijalankan sendiri karena
 setiap tahap membawa seluruh kode tahap sebelumnya.
